@@ -12,11 +12,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  circles: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
+  progress: {
+    margin: 10,
+  },  
 });
 
 export default styles;
