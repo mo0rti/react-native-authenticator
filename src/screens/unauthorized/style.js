@@ -7,18 +7,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
   },
-  welcome: {
+  error: {
     fontSize: 20,
     textAlign: 'center',
+    color: 'red',
     margin: 10,
-  },
-  circles: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  progress: {
-    margin: 10,
-  },  
+  }
 });
 
 export default styles;

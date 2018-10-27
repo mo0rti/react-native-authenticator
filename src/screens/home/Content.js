@@ -6,14 +6,16 @@ import styles from "./style";
 const Content = ({ authCode, progress }) =>
   <View style={styles.container}>
     <TouchableOpacity>
+      <Text>Authentication Code</Text>
       <Text style={styles.welcome}>{authCode}</Text>
       <AnimatedCircularProgress
         size={120}
         width={15}
         duration={1000}
         fill={progress}
-        tintColor="#00e0ff"
-        backgroundColor="#3d5875"/>
+        tintColor="#ffffff"
+        style={{marginTop: 10}}
+        backgroundColor="#007fff"/>
     </TouchableOpacity>
   </View>
 

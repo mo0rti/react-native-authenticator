@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Content from "./Content";
-import OTP from "../lib/otp";
-
-const validTimeInSeconds = 60;
+import OTP from "@Lib/otp";
+import settings from "@Lib/settings";
 
 class Home extends Component {
 
@@ -19,33 +18,23 @@ class Home extends Component {
   }
 
   _generateNewCode = () => {
-
-    let options = {
-      name: 'Google',
-      keySize: 32,
-      codeLength: 6,
-      secret: 'ewtnertuifdgdfhgjurterthj',
-      epoch: 0,
-      timeSlice: 60
-    };
-    let otp = OTP(options);
+    let otp = OTP(settings.otp.options);
+    // HOTP: let newAuthCode = otp.hotp(`pas the counter here`);
     let newAuthCode = otp.totp();
-
-    //let newAuthCode = (Math.random() * 1000000).toFixed();
     this.setState({ ...this.state, authCode: newAuthCode });
   }
 
   startTheTimer() {
     this._generateNewCode();
-    let remainingTime = validTimeInSeconds;
+    let remainingTime = settings.otp.options.timeSlice;
     setInterval(() => {
       remainingTime -= 1;
       if (remainingTime <= 0) {
         this._generateNewCode();
-        remainingTime = validTimeInSeconds;
+        remainingTime = settings.otp.options.timeSlice;
       }
 
-      this.setState({ progress: 100 - (100 * remainingTime / validTimeInSeconds) });
+      this.setState({ progress: 100 - (100 * remainingTime / settings.otp.options.timeSlice) });
     }, 1000);
   }
 
