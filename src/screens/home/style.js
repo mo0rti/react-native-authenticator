@@ -7,18 +7,43 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
   },
-  welcome: {
+  caption: {
+    fontSize: 15,
+    textAlign: 'center',
+    margin: 10,
+  },
+  itemCaption: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
   },
-  circles: {
-    flexDirection: 'row',
-    alignItems: 'center',
+  providerKeyContainer: {
+    flex: 1,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  progress: {
-    margin: 10,
-  },  
+  providerKeyInput: {
+    width: '70%',
+    borderWidth: 1,
+    borderRadius: 5,
+    padding: 10,
+    textAlign: 'center',
+    fontSize: 17
+  },
+  addKeyButton: {
+    width: '45%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'green',
+    padding: 20,
+    borderRadius: 15,
+    margin: 10
+  },
+  addKeyButtonCaption: {
+    color: 'white',
+    fontWeight: 'bold'
+  }
 });
 
 export default styles;

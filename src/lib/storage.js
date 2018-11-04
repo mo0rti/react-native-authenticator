@@ -2,9 +2,9 @@ import { AsyncStorage } from "react-native"
 
 export const storeData = async (data) => {
   try {
-    await AsyncStorage.setItem('data', JSON.stringify(data));
+    return await AsyncStorage.setItem('data', JSON.stringify(data));
   } catch (error) {
-    // Error saving data
+    console.log(error);
   }
 }
 
@@ -14,8 +14,8 @@ export const retrieveData = async () => {
     if (value !== null) {
       return Promise.resolve(JSON.parse(value));
     } else
-      return Promise.resolve({ token: '', currentAuthCode: '', secret: '' });
+      return Promise.resolve({ token: '', secret: '' });
   } catch (error) {
-    // Error retrieving data
+    console.log(error);
   }
 }

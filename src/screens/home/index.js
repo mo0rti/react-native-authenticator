@@ -1,49 +1,54 @@
 import React, { Component } from "react";
 import Content from "./Content";
-import OTP from "@Lib/otp";
-import settings from "@Lib/settings";
+import { storeData } from "@Lib/storage";
 
-class Home extends Component {
+class HomeScreen extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      progress: 0,
-      authCode: 0
+      type: 'none',
+      secretKey: ''
     };
   }
 
-  componentDidMount() {
-    this.startTheTimer();
+  _onItemClicked = (type) => {
+    this.setState({ type });
+
+    if (type == 'barcode')
+      this.props.navigation.navigate('Barcode');
+    else {
+      //this.setState({ enter });
+    }
   }
 
-  _generateNewCode = () => {
-    let otp = OTP(settings.otp.options);
-    // HOTP: let newAuthCode = otp.hotp(`pas the counter here`);
-    let newAuthCode = otp.totp();
-    this.setState({ ...this.state, authCode: newAuthCode });
+  _onChangeText = (secretKey) => {
+    this.setState({ secretKey });
   }
 
-  startTheTimer() {
-    this._generateNewCode();
-    let remainingTime = settings.otp.options.timeSlice;
-    setInterval(() => {
-      remainingTime -= 1;
-      if (remainingTime <= 0) {
-        this._generateNewCode();
-        remainingTime = settings.otp.options.timeSlice;
-      }
+  _onAddKeyButtonClick = () => {
+    let secretKey = this.state.secretKey.split('-').join('');
+    if (secretKey.length < 32) {
+      alert('The Secret Key must be 32 characters long');
+      return;
+    }
 
-      this.setState({ progress: 100 - (100 * remainingTime / settings.otp.options.timeSlice) });
-    }, 1000);
+    storeData({
+      secret: secretKey
+    }).then(() => this.props.navigation.navigate('Otp'));
   }
 
   render() {
-    let { progress, authCode } = this.state;
+    let { type, secretKey } = this.state;
     return (
-      <Content progress={progress} authCode={authCode} />
+      <Content
+        type={type}
+        onItemClicked={this._onItemClicked}
+        secretKey={secretKey}
+        onChangeText={this._onChangeText}
+        onAddKeyButtonClick={this._onAddKeyButtonClick} />
     );
   }
 }
 
-export default Home;
+export default HomeScreen;

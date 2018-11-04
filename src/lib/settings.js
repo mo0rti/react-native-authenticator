@@ -14,7 +14,7 @@ export default {
       name: 'SSP',
       keySize: 32,
       codeLength: 6,
-      secret: 'RLP2WJA7RXJVAZZX74LJUOIOFBFMMA6H',
+      secret: 'RLP2 WJA7 RXJV AZZX 74LJ UOIO FBFM MA6H',
       epoch: 0,
       timeSlice: 60
     }
