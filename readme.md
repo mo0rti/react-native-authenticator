@@ -36,4 +36,9 @@ you can find all the application configs in **`src/lib/settings`**.
     }
 ```
 
+### Screen shots
+<img src="https://raw.githubusercontent.com/MortiTotti/react-native-authenticator/master/images/1.jpg" width="400" aspectRatio="1/2">
+<img src="https://raw.githubusercontent.com/MortiTotti/react-native-authenticator/master/images/2.jpg" width="400" aspectRatio="1/2">
+<img src="https://raw.githubusercontent.com/MortiTotti/react-native-authenticator/master/images/3.jpg" width="400" aspectRatio="1/2">
+
 
