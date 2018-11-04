@@ -12,11 +12,10 @@ export default {
   otp: {
     options: {
       name: 'SSP',
-      keySize: 32,
-      codeLength: 6,
-      secret: 'RLP2 WJA7 RXJV AZZX 74LJ UOIO FBFM MA6H',
+      keySize: 32,    // secret key is 32 characters long
+      codeLength: 6,  // authentication code is 6 digits long
       epoch: 0,
-      timeSlice: 60
+      timeSlice: 60   // each code is valid for 60 seconds
     }
   }
 };
