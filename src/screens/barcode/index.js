@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Content from "./Content";
 import { Dimensions } from "react-native";
 import { RNCamera } from "react-native-camera";
+import { storeData } from "@Lib/storage";
 
 class BarcodeScreen extends Component {
 
@@ -20,13 +21,17 @@ class BarcodeScreen extends Component {
   }
 
   _onBarCodeRead = (scanResult) => {
-    if (scanResult.data != null) {
-      if (!this.barcodeCodes.includes(scanResult.data)) {
-        this.barcodeCodes.push(scanResult.data);
-        console.warn('onBarCodeRead call');
+    if (scanResult.data != null && scanResult.type == 'QR_CODE') {
+      let secretKey = scanResult.data;
+      if (secretKey.length < 32) {
+        alert('The Secret Key must be 32 characters long');
+        return;
       }
+  
+      storeData({
+        secret: secretKey
+      }).then(() => this.props.navigation.navigate('Otp'));
     }
-    return;
   }
 
   _setCameraRef = ref => this.camera = ref;

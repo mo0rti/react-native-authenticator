@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Content from "./Content";
-import { storeData } from "@Lib/storage";
+import { retrieveData, storeData } from "@Lib/storage";
 
 class HomeScreen extends Component {
 
@@ -12,14 +12,17 @@ class HomeScreen extends Component {
     };
   }
 
+  componentDidMount() {
+    retrieveData().then((data) => {
+      if (data.secret)
+        this.props.navigation.navigate('Otp');
+    });
+  }
+
   _onItemClicked = (type) => {
     this.setState({ type });
-
     if (type == 'barcode')
       this.props.navigation.navigate('Barcode');
-    else {
-      //this.setState({ enter });
-    }
   }
 
   _onChangeText = (secretKey) => {
@@ -35,7 +38,7 @@ class HomeScreen extends Component {
 
     storeData({
       secret: secretKey
-    }).then(() => this.props.navigation.navigate('Otp'));
+    }).then(() => this.setState({ type: 'none', secretKey: '' }, () => this.props.navigation.navigate('Otp')));
   }
 
   render() {
