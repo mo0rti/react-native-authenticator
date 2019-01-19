@@ -41,8 +41,6 @@
 	<string>camera is needed</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>microphone is needed</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>camera is needed</string>
 	<key>NSPhotoLibraryUsageDescription</key>

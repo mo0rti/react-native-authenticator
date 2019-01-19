@@ -1,8 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1    
   },
   preview: {
     flex: 1,
@@ -11,24 +11,19 @@ const styles = StyleSheet.create({
   },
   overlay: {
     position: 'absolute',
+    width:'100%',
     padding: 16,
-    right: 0,
-    left: 0,
     alignItems: 'center'
   },
   topOverlay: {
     top: 0,
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    justifyContent: 'center'
   },
   scanScreenMessage: {
     fontSize: 14,
+    paddingTop: Platform.OS === 'ios' ? 20 :0,
     color: 'white',
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center'
+    textAlign: 'center'
   },
   maskOutter: {
     position: 'absolute',
@@ -52,6 +47,11 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   maskCenter: { flexDirection: 'row' },
+  backButton:{
+    position:'absolute',
+    top:30,
+    left:0,
+  }
 });
 
 export default styles;

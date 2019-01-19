@@ -21,7 +21,7 @@ class BarcodeScreen extends Component {
   }
 
   _onBarCodeRead = (scanResult) => {
-    if (scanResult.data != null && scanResult.type == 'QR_CODE') {
+    if (scanResult.data != null && scanResult.type == RNCamera.Constants.BarCodeType.qr) {
       let secretKey = scanResult.data;
       if (secretKey.length < 32) {
         alert('The Secret Key must be 32 characters long');
@@ -35,6 +35,10 @@ class BarcodeScreen extends Component {
   }
 
   _setCameraRef = ref => this.camera = ref;
+
+  _back = ()=>{
+    this.props.navigation.goBack();
+  }
 
   render() {
     let { camera } = this.state;
@@ -50,6 +54,7 @@ class BarcodeScreen extends Component {
         camera={camera}
         maskRowHeight={maskRowHeight}
         maskColWidth={maskColWidth}
+        back={this._back}
       />
     );
   }

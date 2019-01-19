@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View, TouchableOpacity } from 'react-native';
 import { RNCamera } from "react-native-camera";
+import { IconText } from '@Components';
 import styles from "./style";
 
 const PendingView = () =>
@@ -15,7 +16,7 @@ const PendingView = () =>
     <Text>Waiting</Text>
   </View>
 
-const Content = ({ setCameraRef, onBarCodeRead, camera, maskColWidth, maskRowHeight }) =>
+const Content = ({ setCameraRef, onBarCodeRead, camera, maskColWidth, maskRowHeight ,back}) =>
 
   <View style={styles.container}>
     <RNCamera
@@ -49,6 +50,9 @@ const Content = ({ setCameraRef, onBarCodeRead, camera, maskColWidth, maskRowHei
     <View style={[styles.overlay, styles.topOverlay]}>
       <Text style={styles.scanScreenMessage}>Please scan the barcode.</Text>
     </View>
+    <TouchableOpacity onPress={back} style={styles.backButton}>
+        <IconText textColor="white" title='Back' iconName='log-out' />
+      </TouchableOpacity>
   </View>
 
 export default Content;
