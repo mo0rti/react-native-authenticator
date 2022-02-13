@@ -23,7 +23,7 @@ const ProvidedKeyLayout = ({ secretKey, onChangeText, onAddKeyButtonClick }) =>
   </View>
 
 
-const Content = ({ type, onItemClicked, secretKey, onChangeText, onAddKeyButtonClick }) =>
+const Layout = ({ type, onItemClicked, secretKey, onChangeText, onAddKeyButtonClick }) =>
   <View style={styles.container}>
     <Text style={styles.caption}>You can add an account selecting one of the following options:</Text>
     <TouchableOpacity onPress={() => onItemClicked('barcode')}>
@@ -38,4 +38,4 @@ const Content = ({ type, onItemClicked, secretKey, onChangeText, onAddKeyButtonC
     }
   </View>
 
-export default Content;
+export default Layout;

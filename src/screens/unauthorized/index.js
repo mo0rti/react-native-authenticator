@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Content from "./Content";
+import Layout from "./Layout";
 
 class UnAuthorizedScreen extends Component {
 
@@ -9,7 +9,7 @@ class UnAuthorizedScreen extends Component {
 
   render() {
     return (
-      <Content />
+      <Layout />
     );
   }
 }

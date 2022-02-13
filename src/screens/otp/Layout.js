@@ -5,7 +5,7 @@ import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import { IconText } from '@Components';
 import styles from "./style";
 
-const Content = ({ authCode, progress, remainingTime, logout }) =>
+const Layout = ({ authCode, progress, remainingTime, logout }) =>
   <View style={styles.container}>
     <TouchableOpacity>
       <Text>Authentication Code</Text>
@@ -28,4 +28,4 @@ const Content = ({ authCode, progress, remainingTime, logout }) =>
     </View>
   </View>
 
-export default Content;
+export default Layout;

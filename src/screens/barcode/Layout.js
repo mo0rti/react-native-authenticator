@@ -16,7 +16,7 @@ const PendingView = () =>
     <Text>Waiting</Text>
   </View>
 
-const Content = ({ setCameraRef, onBarCodeRead, camera, maskColWidth, maskRowHeight ,back}) =>
+const Layout = ({ setCameraRef, onBarCodeRead, camera, maskColWidth, maskRowHeight, back }) =>
 
   <View style={styles.container}>
     <RNCamera
@@ -31,11 +31,17 @@ const Content = ({ setCameraRef, onBarCodeRead, camera, maskColWidth, maskRowHei
       mirrorImage={false}
       onBarCodeRead={onBarCodeRead}
       onFocusChanged={() => { }}
-      onZoomChanged={() => { }}
-      permissionDialogTitle={'Permission to use camera'}
-      permissionDialogMessage={'We need your permission to use your camera phone'}
+      onZoomChanged={() => { }}      
+      androidCameraPermissionOptions={{
+        title: 'Permission to use camera',
+        message: 'We need your permission to use your camera phone',
+        buttonPositive: 'Ok',
+        buttonNegative: 'Cancel',
+      }}
+
       style={styles.preview}
       type={camera.type}
+      captureAudio={false}
     />
     <View style={styles.maskOutter}>
       <View style={[{ flex: maskRowHeight }, styles.maskRow, styles.maskFrame]} />
@@ -51,8 +57,8 @@ const Content = ({ setCameraRef, onBarCodeRead, camera, maskColWidth, maskRowHei
       <Text style={styles.scanScreenMessage}>Please scan the barcode.</Text>
     </View>
     <TouchableOpacity onPress={back} style={styles.backButton}>
-        <IconText textColor="white" title='Back' iconName='log-out' />
-      </TouchableOpacity>
+      <IconText textColor="white" title='Back' iconName='log-out' />
+    </TouchableOpacity>
   </View>
 
-export default Content;
+export default Layout;
