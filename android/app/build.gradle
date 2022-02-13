@@ -137,7 +137,6 @@ android {
         versionCode 1
         versionName "1.0"
         manifestPlaceholders = [auth0Domain: "mortitotti.auth0.com", auth0Scheme: "${applicationId}"]
-        missingDimensionStrategy 'react-native-camera', 'general' // <--- insert this line
     }
     splits {
         abi {
