@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Content from "./Content";
+import Layout from "./Layout";
 import { retrieveData, storeData } from "@Lib/storage";
 
 class HomeScreen extends Component {
@@ -42,14 +42,16 @@ class HomeScreen extends Component {
   }
 
   render() {
-    let { type, secretKey } = this.state;
+    const { type, secretKey } = this.state;
+
     return (
-      <Content
+      <Layout
         type={type}
         onItemClicked={this._onItemClicked}
         secretKey={secretKey}
         onChangeText={this._onChangeText}
-        onAddKeyButtonClick={this._onAddKeyButtonClick} />
+        onAddKeyButtonClick={this._onAddKeyButtonClick}
+      />
     );
   }
 }

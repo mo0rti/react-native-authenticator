@@ -1,36 +1,20 @@
-import React from 'react';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import HomeScreen from '@Screens/home';
 import OtpScreen from '@Screens/otp';
 import BarcodeScreen from '@Screens/barcode';
-import { createSwitchNavigator, createStackNavigator } from 'react-navigation';
+const Stack = createNativeStackNavigator();
 
-const AppNavigator = createStackNavigator(
-  {
-    Home: HomeScreen,
-    Otp: OtpScreen,
-    Barcode: BarcodeScreen
-  },
-  {
-    initialRouteName: 'Home',
-    headerMode: 'none'
-  }
-);
-
-const SwitchNavigator = createSwitchNavigator(
-  {
-    App: AppNavigator
-  },
-  {
-    initialRouteName: 'App',
-    mode: 'modal',
-    headerMode: 'none'
-  }
-);
-
-export default class RootNavigation extends React.Component {
-  render() {
-    return (
-      <SwitchNavigator />
-    );
-  }
+export default function RootNavigation() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen options={{ headerShown: false }} name="Home" component={HomeScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="Otp" component={OtpScreen} />
+        <Stack.Screen options={{ headerShown: false }} name="Barcode" component={BarcodeScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }

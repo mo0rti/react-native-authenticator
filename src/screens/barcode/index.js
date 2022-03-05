@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Content from "./Content";
+import Layout from "./Layout";
 import { Dimensions } from "react-native";
 import { RNCamera } from "react-native-camera";
 import { storeData } from "@Lib/storage";
@@ -15,15 +15,12 @@ class BarcodeScreen extends Component {
         barcodeFinderVisible: true
       }
     };
-  }
+  }  
 
-  componentDidMount() {
-  }
-
-  _onBarCodeRead = (scanResult) => {
-    if (scanResult.data != null && scanResult.type == RNCamera.Constants.BarCodeType.qr) {
+  _onBarCodeRead = (scanResult) => {    
+    if (scanResult.data != null && scanResult.type == RNCamera.Constants.BarCodeType.qr) {      
       let secretKey = scanResult.data;
-      if (secretKey.length < 32) {
+      if (secretKey.length < 32) {        
         alert('The Secret Key must be 32 characters long');
         return;
       }
@@ -41,14 +38,14 @@ class BarcodeScreen extends Component {
   }
 
   render() {
-    let { camera } = this.state;
+    const { camera } = this.state;
 
     const { height, width } = Dimensions.get('window');
     const maskRowHeight = Math.round((height - 300) / 20);
     const maskColWidth = (width - 300) / 2;
 
     return (
-      <Content
+      <Layout
         onBarCodeRead={this._onBarCodeRead}
         setCameraRef={this._setCameraRef}
         camera={camera}

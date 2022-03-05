@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Content from "./Content";
+import Layout from "./Layout";
 import OTP from "@Lib/otp";
 import settings from "@Lib/settings";
 import { storeData, retrieveData } from "@Lib/storage";
@@ -27,7 +27,7 @@ class Home extends Component {
 
   componentWillUnmount() {
     this.timerInterval && clearInterval(this.timerInterval);
-    this.timerInterval = false;    
+    this.timerInterval = false;
   }
 
   _generateNewCode = () => {
@@ -35,7 +35,7 @@ class Home extends Component {
     let otp = OTP(options);
     // HOTP: let newAuthCode = otp.hotp(`pas the counter here`);
     let newAuthCode = otp.totp();
-    console.log(newAuthCode);
+    // console.log(newAuthCode);
     this.setState({ authCode: newAuthCode });
   }
 
@@ -50,7 +50,7 @@ class Home extends Component {
       this._generateNewCode();
 
       let progress = 100 - ((100 * remainingTime) / settings.otp.options.timeSlice);
-      console.log(progress, remainingTime);
+      // console.log(progress, remainingTime);
       this.setState({ progress, remainingTime });
     }, 1000);
   }
@@ -60,9 +60,14 @@ class Home extends Component {
   }
 
   render() {
-    let { authCode, progress, remainingTime } = this.state;
+    const { authCode, progress, remainingTime } = this.state;
     return (
-      <Content authCode={authCode} progress={progress} remainingTime={remainingTime} logout={this._logout}/>
+      <Layout
+        authCode={authCode}
+        progress={progress}
+        remainingTime={remainingTime}
+        logout={this._logout}
+      />
     );
   }
 }
