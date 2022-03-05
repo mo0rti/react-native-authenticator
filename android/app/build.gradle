@@ -78,7 +78,7 @@ import com.android.build.OutputFile
  */
  
 project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
+    enableHermes: true,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -137,6 +137,7 @@ android {
         versionCode 1
         versionName "1.0"
         manifestPlaceholders = [auth0Domain: "mortitotti.auth0.com", auth0Scheme: "${applicationId}"]
+        missingDimensionStrategy 'react-native-camera', 'general'
     }
     splits {
         abi {
@@ -223,3 +224,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

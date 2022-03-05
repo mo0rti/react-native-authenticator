@@ -15,12 +15,12 @@ class BarcodeScreen extends Component {
         barcodeFinderVisible: true
       }
     };
-  }
+  }  
 
-  _onBarCodeRead = (scanResult) => {
-    if (scanResult.data != null && scanResult.type == RNCamera.Constants.BarCodeType.qr) {
+  _onBarCodeRead = (scanResult) => {    
+    if (scanResult.data != null && scanResult.type == RNCamera.Constants.BarCodeType.qr) {      
       let secretKey = scanResult.data;
-      if (secretKey.length < 32) {
+      if (secretKey.length < 32) {        
         alert('The Secret Key must be 32 characters long');
         return;
       }

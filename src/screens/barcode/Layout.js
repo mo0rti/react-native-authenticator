@@ -31,7 +31,7 @@ const Layout = ({ setCameraRef, onBarCodeRead, camera, maskColWidth, maskRowHeig
       mirrorImage={false}
       onBarCodeRead={onBarCodeRead}
       onFocusChanged={() => { }}
-      onZoomChanged={() => { }}      
+      onZoomChanged={() => { }}
       androidCameraPermissionOptions={{
         title: 'Permission to use camera',
         message: 'We need your permission to use your camera phone',
